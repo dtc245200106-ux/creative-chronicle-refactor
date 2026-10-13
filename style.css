@@ -1,0 +1,145 @@
+/* ============================================
+   RESET & GLOBAL
+   ============================================ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* ============================================
+   VÙNG 1: AUTHOR INFO - Border dưới
+   ============================================ */
+.author-section {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    flex-shrink: 0;
+}
+
+.author-details h5 {
+    color: #1a2a4a;
+    font-weight: 600;
+}
+
+/* ============================================
+   VÙNG 2: MOSAIC GALLERY - CSS GRID
+   ============================================ */
+.mosaic-gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+    height: 500px;
+}
+
+.photo-main {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.photo-sub-1 {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.photo-sub-2 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Ảnh trong mosaic */
+.mosaic-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.mosaic-gallery > div:hover img {
+    transform: scale(1.08);
+}
+
+/* Label trên ảnh */
+.mosaic-gallery span {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    font-size: 16px;
+}
+
+/* ============================================
+   RECOMMENDED ARTICLES
+   ============================================ */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+.card-img-top {
+    height: 160px;
+    object-fit: cover;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablet: Gallery giữ nguyên, nhưng chiều cao giảm */
+@media (max-width: 992px) {
+    .mosaic-gallery {
+        height: 400px;
+    }
+}
+
+/* Mobile: Gallery chuyển thành 1 cột */
+@media (max-width: 768px) {
+    .mosaic-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+    }
+
+    .photo-main,
+    .photo-sub-1,
+    .photo-sub-2 {
+        grid-column: 1 / 2;
+        grid-row: auto;
+        height: 220px;
+    }
+
+    /* Author: Share buttons xuống dòng */
+    .author-section {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+}
